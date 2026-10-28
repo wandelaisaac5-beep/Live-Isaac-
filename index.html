@@ -1,0 +1,25 @@
+
+
+<!DOCTYPE html>
+<html>
+<head><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Live-Isaac</title>
+<style>body{font-family:sans-serif;background:#0f172a;color:#fff;padding:12px}#chat{height:65vh;overflow:auto;background:#1e293b;padding:10px;border-radius:12px}.msg{margin:6px;padding:8px;background:#334155;border-radius:8px}input,button{width:100%;padding:12px;margin-top:8px;border-radius:8px;border:none}button{background:#22c55e;font-weight:bold}#timer{color:#22c55e;font-weight:bold}</style>
+</head>
+<body>
+<h3>Live-Isaac Live Chat (3 min)</h3>
+<div id="timer">Time left: 3:00</div>
+<div id="chat"></div>
+<input id="name" placeholder="Your name">
+<input id="text" placeholder="Type message">
+<button onclick="send()">Send</button>
+<script>
+let chat=JSON.parse(localStorage.getItem('lc')||'[]');
+let left=180;
+function render(){let c=document.getElementById('chat');c.innerHTML='';chat.forEach(m=>c.innerHTML+=`<div class=msg><b>${m.name}:</b> ${m.text}</div>`);c.scrollTop=c.scrollHeight;}
+function send(){let n=document.getElementById('name').value||'Anon';let t=document.getElementById('text').value;if(!t)return;chat.push({name:n,text:t});localStorage.setItem('lc',JSON.stringify(chat));document.getElementById('text').value='';left=180;render();}
+render();
+setInterval(()=>{left--;let m=Math.floor(left/60),s=left%60;document.getElementById('timer').innerText=`Time left: ${m}:${s<10?'0':''}${s}`;if(left<=0){chat=[];localStorage.removeItem('lc');render();left=180;}},1000);
+</script>
+</body>
+</html>

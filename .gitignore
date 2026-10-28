@@ -1,0 +1,45 @@
+# Live-Isaac-
+
+Live-Isaac is a lightweight live chat app built to give users a quick way to enter a conversation and stay active for a short session window. The experience is intentionally simple: users can join, chat in real time, and the session ends after three minutes.
+
+## Features
+
+- Real-time chat using Socket.IO
+- 3-minute session countdown
+- Live presence tracking
+- Simple browser-based interface
+- Easy local setup
+
+## Tech stack
+
+- Node.js
+- Express
+- Socket.IO
+
+## Run locally
+
+1. Install dependencies
+   ```bash
+   npm install
+   ```
+
+2. Start the app
+   ```bash
+   npm start
+   ```
+
+3. Open the app in your browser
+   ```text
+   http://localhost:3000
+   ```
+
+## How it works
+
+- The app opens a live chat room for a short session.
+- Users choose a display name and join.
+- Messages are broadcast instantly to everyone in the room.
+- The room closes after 3 minutes and the session resets for the next round.
+
+## Project status
+
+This is a working MVP and can be expanded with authentication, persistent storage, private rooms, or a database-backed chat history.

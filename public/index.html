@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Live-Isaac</title>
+    <link rel="stylesheet" href="/style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">Live chat</p>
+          <h1>Live-Isaac</h1>
+        </div>
+        <div class="session-box">
+          <span>Session ends in</span>
+          <strong id="countdown">03:00</strong>
+        </div>
+      </header>
+
+      <div class="join-panel" id="join-panel">
+        <label for="username">Choose your name</label>
+        <div class="join-row">
+          <input id="username" maxlength="20" placeholder="Type your name" />
+          <button id="join-btn">Join chat</button>
+        </div>
+        <p id="join-status" class="status-message"></p>
+      </div>
+
+      <main class="chat-layout hidden" id="chat-layout">
+        <section class="chat-card">
+          <div class="chat-header">
+            <h2>Live room</h2>
+            <span id="user-count">0 online</span>
+          </div>
+          <div id="messages" class="messages" aria-live="polite"></div>
+          <form id="chat-form" class="chat-form">
+            <input id="message-input" type="text" maxlength="500" placeholder="Type your message..." />
+            <button type="submit">Send</button>
+          </form>
+        </section>
+      </main>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/script.js"></script>
+  </body>
+</html>
